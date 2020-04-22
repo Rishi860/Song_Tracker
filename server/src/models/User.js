@@ -1,9 +1,9 @@
-module.exports = (sequelize, DataTypes) => 
+module.exports = (sequelize, DataTypes) =>
   sequelize.define('User', {
     email: {
       type: DataTypes.STRING,
-      Unique: true
+      unique: true
     },
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
   })
   

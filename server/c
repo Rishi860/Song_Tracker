@@ -1,0 +1,4 @@
+npm i -g rimraf
+npm i -D sqlite3
+rimraf node_modules
+npm i

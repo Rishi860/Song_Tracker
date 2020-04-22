@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <v-toolbar
+      color="indigo"
+      dark
+      height="100px"
+      fixed
+    >
+    <v-toolbar-title
+      @click="navigateTo({name:'root'})"
+      class="root">Tab Tracker</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+      <v-btn depressed dark
+        color="indigo"
+        @click="navigateTo({name:'login'})">
+         Login
+      </v-btn>
+      <v-btn depressed dark
+        color="indigo"
+        @click="navigateTo({name:'register'})">
+         Sign Up 
+      </v-btn>
+    </v-toolbar-items>
+    </v-toolbar>
+  </div>
+</template>
+
+<script>
+
+export default {
+  methods:{
+      navigateTo(route) {
+          this.$router.push(route)
+      }
+  }
+}
+</script>
+
+<style scoped>
+.root:hover{
+ cursor: pointer;
+}
+</style>
