@@ -24,12 +24,13 @@
     <v-col>
       <v-text-field
         label="Password"
+        type="password"
         v-model="password"
       ></v-text-field>
     </v-col>
     <div class="error" v-html="error"/>
     <div class="text-center pad">
-      <v-btn @click="login" rounded color="indigo" dark>Register</v-btn>
+      <v-btn @click="login" rounded color="indigo" dark>Login</v-btn>
     </div>
 
   </v-card>
@@ -51,10 +52,12 @@ export default {
   methods: {
     async login () {
       try {
-        await AuthenticationServices.login({
+        const response = await AuthenticationServices.login({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

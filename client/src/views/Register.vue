@@ -23,6 +23,7 @@
     <v-col>
       <v-text-field
         label="Password"
+        type="password"
         v-model="password"
       ></v-text-field>
     </v-col>
@@ -42,18 +43,20 @@ export default {
   name: 'Register',
   data () {
     return {
-      email:'abc',
-      password:'123456',
+      email:'',
+      password:'',
       error: ''
     }
   },
   methods: {
     async register () {
       try {
-        await AuthenticationServices.register({
+        const response = await AuthenticationServices.register({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

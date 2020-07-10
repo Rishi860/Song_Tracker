@@ -11,12 +11,16 @@
       class="root">Tab Tracker</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn depressed dark
+      <v-btn
+        v-if="!$store.state.isUserLoggedin"
+        depressed dark
         color="indigo"
         @click="navigateTo({name:'login'})">
          Login
       </v-btn>
-      <v-btn depressed dark
+      <v-btn
+        v-if="!$store.state.isUserLoggedin"
+        depressed dark
         color="indigo"
         @click="navigateTo({name:'register'})">
          Sign Up 
