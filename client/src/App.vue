@@ -22,7 +22,10 @@ export default {
   },
 
   data: () => ({
-    //
+    // declaring variables in here
+    // error: '',
+    // email: '',
+    // password: ''
   }),
 };
 </script>

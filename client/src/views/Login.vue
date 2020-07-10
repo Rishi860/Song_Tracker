@@ -43,6 +43,9 @@ export default {
   name: 'Register',
   data () {
     return {
+      error: '',
+      email: '',
+      password: ''
     }
   },
   methods: {

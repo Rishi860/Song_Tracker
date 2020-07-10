@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const {sequelize} = require("./models");
 const config = require("./config/config");
-const {createProxyMiddleware} = require('http-proxy-middleware')
+// const {createProxyMiddleware} = require('http-proxy-middleware')
 
 const app = express();
 app.use(morgan('combined'))
@@ -15,7 +15,7 @@ require("./routes")(app)
 
 sequelize.sync()
   .then(() => {
-    app.use('/register',createProxyMiddleware({target:'http://localhost:8080/',changeOrigin:true}))
+    // app.use('/register',createProxyMiddleware({target:'http://localhost:8080/',changeOrigin:true}))
     app.listen(config.port);
     console.log(`Server has started ${config.port}`)
   })

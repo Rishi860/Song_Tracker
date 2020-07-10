@@ -8,7 +8,6 @@
       color="indigo"
       dark
     >
-      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
       <v-toolbar-title>Sign Up</v-toolbar-title>
 
@@ -43,6 +42,9 @@ export default {
   name: 'Register',
   data () {
     return {
+      email:'abc',
+      password:'123456',
+      error: ''
     }
   },
   methods: {
