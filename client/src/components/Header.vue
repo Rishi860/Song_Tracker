@@ -8,7 +8,15 @@
     >
     <v-toolbar-title
       @click="navigateTo({name:'root'})"
-      class="root">Tab Tracker</v-toolbar-title>
+      class="root">
+      Tab Tracker
+    </v-toolbar-title>
+    <v-btn
+        depressed dark
+        color="indigo"
+        @click="navigateTo({name:'songs'})">
+         Browse
+    </v-btn>
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <v-btn
@@ -25,6 +33,13 @@
         @click="navigateTo({name:'register'})">
          Sign Up 
       </v-btn>
+      <v-btn
+        v-if="$store.state.isUserLoggedin"
+        depressed dark
+        color="indigo"
+        @click="logout">
+         Log Out 
+      </v-btn>
     </v-toolbar-items>
     </v-toolbar>
   </div>
@@ -34,9 +49,14 @@
 
 export default {
   methods:{
-      navigateTo(route) {
-          this.$router.push(route)
-      }
+    navigateTo(route) {
+      this.$router.push(route)
+    },
+    logout() {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({name: 'root'})
+    }
   }
 }
 </script>

@@ -1,37 +1,23 @@
 <template>
-  <v-card
-    class="mx-auto"
-    max-width="500"
-  >
-
-    <v-toolbar
-      color="indigo"
-      dark
-    >
-
+  <v-card class="mx-auto" max-width="500">
+    <v-toolbar color="indigo" dark>
       <v-toolbar-title>Sign Up</v-toolbar-title>
-
       <v-spacer></v-spacer>
-
     </v-toolbar>
-    <v-col>
-      <v-text-field
-        label="Email"
-        v-model="email"
-      ></v-text-field>
+    <div>
+      <v-col>
+      <v-text-field label="Email" v-model="email">
+      </v-text-field>
     </v-col>
     <v-col>
-      <v-text-field
-        label="Password"
-        type="password"
-        v-model="password"
-      ></v-text-field>
+      <v-text-field label="Password" type="password" v-model="password">
+      </v-text-field>
     </v-col>
+    </div>
     <div class="error" v-html="error"/>
     <div class="text-center pad">
       <v-btn @click="register" rounded color="indigo" dark>Register</v-btn>
     </div>
-
   </v-card>
 </template>
 
