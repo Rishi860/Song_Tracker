@@ -15,7 +15,6 @@ require("./routes")(app)
 
 sequelize.sync()
   .then(() => {
-    // app.use('/register',createProxyMiddleware({target:'http://localhost:8080/',changeOrigin:true}))
     app.listen(config.port);
     console.log(`Server has started ${config.port}`)
   })

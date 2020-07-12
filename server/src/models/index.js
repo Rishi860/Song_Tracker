@@ -20,8 +20,6 @@ fs
   .forEach((file) => {
     const model = sequelize.import(path.join(__dirname, file))
     db[model.name] = model;
-    console.log(model)
-    console.log(db[model.name])
   })
 
   db.sequelize = sequelize;
