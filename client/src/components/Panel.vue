@@ -4,7 +4,7 @@
       <v-toolbar-title>{{title}}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <v-col>
+    <v-col class="text-center">
       <slot>No slot content defined</slot> 
     </v-col>
   </div>

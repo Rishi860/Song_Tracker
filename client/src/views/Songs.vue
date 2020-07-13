@@ -2,7 +2,7 @@
   <v-card class="mx-auto" max-width="500">  
     <panel title="Songs">
       <div
-      v-for="song in songs" :key="song.title">
+      v-for="song in songs" :key="song.id">
       {{song.title}}-
       {{song.artist}}-
       {{song.album}}
@@ -25,7 +25,7 @@ export default {
     }
   },
   async mounted () {
-    this.songs = await SongServices.index()
+    this.songs = (await SongServices.index()).data
   }
 }
 </script>

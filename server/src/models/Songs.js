@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) =>{
-  const User = sequelize.define('User', {
+  const Song = sequelize.define('Song', {
     title: DataTypes.STRING,
     artist: DataTypes.STRING,
     genre: DataTypes.STRING,
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) =>{
     tab: DataTypes.TEXT,
     youtubeID: DataTypes.STRING,
   })
-  return User
+  return Song
 }
