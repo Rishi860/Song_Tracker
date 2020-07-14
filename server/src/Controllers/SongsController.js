@@ -11,6 +11,18 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
+        error: 'An error has occured during fetching the songs'
+      })
+    }
+  },
+
+  async show (req, res) {
+    try {
+      const song = await Song.findByPk(req.params.songId)
+      res.send(song)
+    } catch (err) {
+      console.log(err)
+      res.status(500).send({
         error: 'An error has occured during fetching the song'
       })
     }
