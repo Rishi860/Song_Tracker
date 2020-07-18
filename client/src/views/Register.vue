@@ -20,9 +20,7 @@
 </template>
 
 <script>
-
 import AuthenticationServices from '@/services/AuthenticationServices'
-import Panel from '../components/Panel'
 
 export default {
   name: 'Register',
@@ -46,9 +44,6 @@ export default {
         this.error = error.response.data.error
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>

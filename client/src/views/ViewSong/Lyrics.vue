@@ -5,15 +5,10 @@
 </template>
 
 <script>
-import Panel from '../../components/Panel'
-
 export default {
-    props: [
-        'lyrics'
-    ],
-    components: {
-        Panel
-    }
+  props: [
+      'lyrics'
+  ]
 }
 </script>
 

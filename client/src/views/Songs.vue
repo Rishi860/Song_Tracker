@@ -40,13 +40,9 @@
 </template>
 
 <script>
-import Panel from '../components/Panel'
 import SongServices from '../services/SongServices'
 
 export default {
-  components: {
-    Panel
-  },
   data () {
     return {
       songs:null

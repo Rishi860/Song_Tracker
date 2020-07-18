@@ -41,7 +41,6 @@
 import SongServices from '../../services/SongServices'
 import YouTube from './Youtube'
 import Lyrics from './Lyrics'
-import Panel from '../../components/Panel'
 
 export default {
   data () {
@@ -61,7 +60,6 @@ export default {
   components: {
     YouTube,
     Lyrics,
-    Panel
   }
 }
 </script>
