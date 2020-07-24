@@ -23,11 +23,6 @@ export default {
   async mounted () {
     this.songs = (await SongServices.index()).data
   },
-  methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
-  },
   components: {
     SongsPanel,
     SongsSearchPanel

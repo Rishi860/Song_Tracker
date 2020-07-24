@@ -46,12 +46,17 @@ export default {
       songs:null
     }
   },
-  async mounted () {
-    this.songs = (await SongServices.index()).data
-  },
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    }
+  },
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongServices.index(value)).data
+      }
     }
   }
 }
@@ -62,6 +67,6 @@ export default {
   padding: 20px;
 }
 .album-image{
-  width: 70%
+  width: 50%
 }
 </style>
