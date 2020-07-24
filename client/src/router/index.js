@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Home.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Songs from '../views/Songs/Index.vue'
@@ -11,11 +10,6 @@ import EditSong from '../views/EditSong'
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'root',
-    component: Home
-  },
   {
     path: '/register',
     name: 'register',

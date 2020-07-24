@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="500">
+    <v-card class="mx-auto" max-width="900">
       <panel title="Song MetaData">
         <v-layout>
           <v-flex xs6>
@@ -17,6 +17,24 @@
             color="indigo"
             dark>
             Edit
+            </v-btn>
+
+            <v-btn 
+            v-if="isUserLoggedin"
+            class="ml-1"
+            @click="Bookmark"     
+            color="indigo"
+            dark>
+            Bookmark
+            </v-btn>
+
+            <v-btn 
+            v-if="isUserLoggedin"
+            class="ml-1"
+            @click="unBookmark"    
+            color="indigo"
+            dark>
+            Un Bookmark
             </v-btn>
           </v-flex>
           <v-flex xs6>
@@ -38,6 +56,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import SongServices from '../../services/SongServices'
 import YouTube from './Youtube'
 import Lyrics from './Lyrics'
@@ -48,9 +67,20 @@ export default {
       song:{}
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedin'
+    ])
+  },
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    Bookmark(){
+      console.log('bookmarked')
+    },
+    unBookmark(){
+      console.log('Un bookmarked')
     }
   },
   async mounted () {

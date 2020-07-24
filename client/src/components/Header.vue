@@ -7,7 +7,7 @@
       fixed
     >
     <v-toolbar-title
-      @click="navigateTo({name:'root'})"
+      @click="navigateTo({name:'songs'})"
       class="root">
       Tab Tracker
     </v-toolbar-title>
@@ -55,7 +55,7 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
-      this.$router.push({name: 'root'})
+      this.$router.push({name: 'songs'})
     }
   }
 }
