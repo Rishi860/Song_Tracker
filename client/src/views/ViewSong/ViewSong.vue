@@ -1,48 +1,9 @@
 <template>
   <div>
-    <v-card class="mx-auto" max-width="900">
-      <panel title="Song MetaData">
-        <v-layout>
-          <v-flex xs6>
-            <h3>{{song.title}}</h3>
-            <h4>{{song.album}}</h4>
-            <h5>{{song.artist}}</h5>
-            <v-btn 
-            @click="navigateTo({
-              name:'edit',
-              params: {
-                songId:song.id
-              }
-            })"     
-            color="indigo"
-            dark>
-            Edit
-            </v-btn>
-
-            <v-btn 
-            v-if="isUserLoggedin"
-            class="ml-1"
-            @click="Bookmark"     
-            color="indigo"
-            dark>
-            Bookmark
-            </v-btn>
-
-            <v-btn 
-            v-if="isUserLoggedin"
-            class="ml-1"
-            @click="unBookmark"    
-            color="indigo"
-            dark>
-            Un Bookmark
-            </v-btn>
-          </v-flex>
-          <v-flex xs6>
-            <img class="album-image" :src="song.albumImageUrl"/>
-          </v-flex>
-        </v-layout>
-      </panel>
-    </v-card>
+    <v-layout>
+      <song-metadata :song="song">
+      </song-metadata>
+    </v-layout>
     <v-layout class="mt-2">
       <v-flex xs5>
         <lyrics :lyrics="song.lyrics"/>
@@ -56,31 +17,15 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
 import SongServices from '../../services/SongServices'
 import YouTube from './Youtube'
+import SongMetadata from './SongMetadata'
 import Lyrics from './Lyrics'
 
 export default {
   data () {
     return {
       song:{}
-    }
-  },
-  computed: {
-    ...mapState([
-      'isUserLoggedin'
-    ])
-  },
-  methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    },
-    Bookmark(){
-      console.log('bookmarked')
-    },
-    unBookmark(){
-      console.log('Un bookmarked')
     }
   },
   async mounted () {
@@ -90,12 +35,10 @@ export default {
   components: {
     YouTube,
     Lyrics,
+    SongMetadata
   }
 }
 </script>
 
 <style scoped>
-.album-image{
-  width: 70%
-}
 </style>
