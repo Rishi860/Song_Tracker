@@ -4,8 +4,8 @@ module.exports = {
 
   async index (req, res) {
     try {
-      const {songId, userId} = req.query
-
+      const {songId, userId} = req.body
+      console.log(songId, userId,req.body)
       const bookmark = await Bookmark.findAll({
         where: {
           SongId: songId,
@@ -16,16 +16,28 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'An error has occured during bookmarking the song'
+        error: 'An error has occured during bookmarking initially the song'
       })
     }
   },
   async post (req, res) {
     try {
-      const bookmark = req.body
+      const {songId, userId} = req.body
+      const bookmark = await Bookmark.findAll({
+        where: {
+          SongId: songId,
+          UserId: userId
+        }
+      })
+      console.log(bookmark)
+      if(bookmark[0]){
+        return res.status(400).send({
+          error: 'You have already bookmarked this song'
+        })
+      }
 
-      await Bookmark.create(bookmark)
-      res.send(bookmark)
+      const newBookmark = await Bookmark.create(req.body)
+      res.send(newBookmark)
     } catch (err) {
       console.log(err)
       res.status(500).send({

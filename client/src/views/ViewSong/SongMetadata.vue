@@ -60,9 +60,12 @@ export default {
     }
   },
   async mounted () {
-    console.log('bookmarked '+this.song)
+    if(!this.isUserLoggedin){
+      return;
+    }
+    console.log(this.$store.state.route.params.songId+''+this.$store.state.user.id)
     const bookmark = (await BookmarkServices.index({
-      songId: this.song.id,
+      songId: this.$store.state.route.params.songId,
       userId: this.$store.state.user.id
     })).data
     this.isBookmarked = !!bookmark
@@ -74,7 +77,7 @@ export default {
     async Bookmark(){
       try {
         await BookmarkServices.post({
-        songId: this.song.id,
+        songId: this.$store.state.route.params.songId,
         userId: this.$store.state.user.id
         })
       } catch (err) {
@@ -84,7 +87,7 @@ export default {
     async unBookmark(){
       try {
         await BookmarkServices.delete({
-        songId: this.song.id,
+        songId: this.$store.state.route.params.songId,
         userId: this.$store.state.user.id
         })
       } catch (err) {

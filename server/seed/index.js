@@ -16,6 +16,7 @@ sequelize.sync({ force:true })
         User.create(user)  
       })
     )
+    
 
     await Promise.all(
         songs.map(song => {
